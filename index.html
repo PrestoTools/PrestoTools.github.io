@@ -3,9 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=1000">
-	<title>Presto Tools</title>
+	<title>PrestoTools - presto.js</title>
 	<meta name="description" content="JavaScript library for simultaneous file upload." />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
 	<link rel="stylesheet" href="/assets/css/style.css" type="text/css" media="screen" />
 	<link rel="apple-touch-icon" sizes="180x180" href="/icon.png" />
 	<link rel="apple-touch-icon-precomposed" href="/icon.png" />
@@ -14,15 +15,148 @@
 </head>
 <body>
 	<header class="header">
-		<h2 class="header_title">Presto Tools</h2>
+		<div class="header_inner">
+			<div class="header_left">
+				<h2 class="header_title">
+					<a href="/">
+						<img class="header_title_logo" src="/icon.png" width="60" height="60" alt="" />
+						<span class="header_title_text">PrestoTools</span>
+					</a>
+				</h2>
+			</div>
+			<div class="header_right">
+				<nav class="hdNav">
+					<ul class="hdNav_items">
+						<li class="hdNav_item"><a href="#features">Features</a></li>
+						<li class="hdNav_item"><a href="#example">Example</a></li>
+						<li class="hdNav_item"><a href="#documentation">Documentation</a></li>
+						<li class="hdNav_item"><a href="#license">License</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
 	</header>
 
-	<main class="content">
-		<div class="content_logo">
-			<img src="/icon.png" width="100" height="100" alt="" />
+	<section class="topHero">
+		<div class="topHero_inner">
+			<h1 class="topHero_title">presto.js</h1>
+			<p class="topHero_subTitle">presto.js is a small JavaScript library for file upload.</p>
+			<div class="topHero_links">
+				<a href="https://github.com/PrestoTools/presto.js/releases/download/v0.1.0-beta/presto.js-v0.1.0-beta.zip" target="_blank">
+					<i class="fas fa-download"></i> Download
+				</a>
+				<a href="https://github.com/PrestoTools/presto.js" target="_blank">
+					<i class="fab fa-github"></i> View on GitHub
+				</a>
+			</div>
 		</div>
-		<p class="content_message">This page is now under construction.</p>
-	</main>
+	</section>
+
+	<section id="features" class="pageSection topFeatures">
+		<h2 class="pageSection_title">Features</h2>
+		<ul class="topFeatures_items">
+			<li class="topFeatures_item">
+				<p class="topFeatures_title">Fast</p>
+				<p class="topFeatures_description">Faster than browsers' default file upload.</p>
+			</li>
+			<li class="topFeatures_item">
+				<p class="topFeatures_title">Easy to integrate</p>
+				<p class="topFeatures_description">presto.js has no dependent libraries. See minimal example below!</p>
+			</li>
+			<li class="topFeatures_item">
+				<p class="topFeatures_title">Available for large-size transfers</p>
+				<p class="topFeatures_description">You can upload hundreds of GB of files at a time with presto.</p>
+			</li>
+		</ul>
+
+		<div class="topFigure"></div>
+	</section>
+
+	<section id="example" class="pageSection topExample">
+		<h2 class="pageSection_title">Example</h2>
+		<div class="topExample_codepen">
+			<p data-height="265" data-theme-id="dark" data-slug-hash="NOWgJG" data-default-tab="js" data-user="yuw27b" data-pen-title="presto.js minimal example" class="codepen">See the Pen <a href="https://codepen.io/yuw27b/pen/NOWgJG/">presto.js minimal example</a> by Yu Watanabe (<a href="https://codepen.io/yuw27b">@yuw27b</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+			<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+		</div>
+		<div class="topExample_footer">
+			<a class="topExample_link" href="https://github.com/PrestoTools/presto.js" target="_blank">
+				<i class="fas fa-external-link-alt"></i> More examples found on GitHub
+			</a>
+		</div>
+	</section>
+
+	<section id="documentation" class="pageSection topDocumentation">
+		<h2 class="pageSection_title">Documentation</h2>
+		<div class="documentation_body">
+			<h3>Configuration</h3>
+			<pre><code>const presto = new Presto({ url: '/api/upload', ... });</code></pre>
+
+			<h4>Configuration options</h4>
+			<ul>
+				<li><code>url</code>: [string] URL of upload destination. (Default: <code>''</code>)</li>
+				<li><code>chunkSize</code>: [integer] Size (byte) of each chunk (Default: <code>1048576 //1MB</code>)</li>
+				<li><code>simultaneous</code>: [integer] Number of chunks to send abreast. 6 is recommended for HTTP/1.1 and 10 is recommended for HTTP/2.  (Default: <code>6</code>)</li>
+				<li><code>element</code>: [HTMLFormElement] If specified, the upload will start automatically when the form is submitted. The element must have a HTMLFormInput[type="file"] as a child. (Default: <code>null</code>)</li>
+				<li><code>uniqueIdGenerator</code>: [function] A custom function that defines a unique ID for each file. The ID is sent with each chunk. (Default: <code>fileObject =&gt; {return `presto_${UUID_V4_STRING}`; }</code>)</li>
+				<li><code>httpHeaders</code>: [function] A custom function to add HTTP headers to each chunk send request. (Default: <code>PrestoFile =&gt; {return {}; }</code>)</li>
+				<li><code>withCredentials</code>: [boolean] This value is used as the withCredentials option of the chunk send request(XMLHttpRequest). Set <code>true</code> to send cookies with cross domain request. (Default: <code>false</code>)</li>
+			</ul>
+
+			<h3>Properties</h3>
+			<ul>
+				<li><code>Presto.fileList</code>: [array] Array of PrestoFile.</li>
+				<li><code>PrestoFile.prestoId</code>: [string] Unique ID of PrestoFile.</li>
+				<li><code>PrestoFile.name</code>: [string] File name.</li>
+				<li><code>PrestoFile.size</code>: [integer] File size (byte).</li>
+				<li><code>PrestoFile.displaySize</code>: [string] Human readable file size.</li>
+			</ul>
+
+			<h3>Methods</h3>
+			<ul>
+				<li><code>Presto.on(string eventName, function callback)</code>: Add event listener to Presto.</li>
+				<li><code>Presto.off(string eventName, function callback)</code>: Remove event listener from Presto.</li>
+				<li><code>Presto.add(HTML5 FileList object)</code>: Add file(s) to Presto.</li>
+				<li><code>Presto.remove(string prestoId)</code>: Remove file from Presto. If nothing is specified, remove all files.</li>
+				<li><code>Presto.reset(HTML5 FileList object)</code>: Replace <code>Presto.fileList</code> with specified file list. If nothing is specified, remove all files.</li>
+				<li><code>Presto.send(string prestoId)</code>: Start file upload of the specified file. If nothing is specified, upload all files.</li>
+				<li><code>Presto.abort(string prestoId)</code>: Abort file upload of the specified file. If nothing is specified, abort all files.</li>
+				<li><code>Presto.progress(string prestoId)</code>: Return upload progress (float number between 0 - 1) of the specified file. If nothing is specified, return progress for all files.</li>
+			</ul>
+
+			<h3>Events</h3>
+			<p><code>Presto</code> offers the following events:</p>
+			<ul>
+				<li><code>added</code>: Fires when file is added. Returns array of <code>PrestoFile</code>.</li>
+				<li><code>removed</code>: Fires when file(s) is removed. Returns array of removed file ID.</li>
+				<li><code>reset</code>: Fires when <code>Presto.fileList</code> is reset.</li>
+				<li><code>start</code>: Fires when uploading is started.</li>
+				<li><code>abort</code>: Fires when uploading is aborted.</li>
+				<li><code>complete</code>: Fires when uploading is completed. Returns duration of uploading(msec).</li>
+				<li><code>progress</code>: Fires whenever chunk upload succeeds. Returns progress for all files(float number between 0 - 1).</li>
+				<li><code>fileStart</code>: Fires whenever uploading of each file is started. Returns <code>PrestoFile</code>.</li>
+				<li><code>fileAbort</code>: Fires whenever uploading of each file is aborted. Returns <code>PrestoFile</code>.</li>
+				<li><code>fileComplete</code>: Fires whenever uploading of each file is completed. Returns <code>PrestoFile</code>.</li>
+				<li><code>fileProgress</code>: Fires whenever chunk upload succeeds. Returns <code>fileProgress</code>(float number between 0 - 1), <code>PrestoFile</code>.</li>
+				<li><code>fileError</code>: Fires when chunk upload fails. Returns <code>chunkIndex</code>, <code>HTTP status code</code>, <code>HTTP status text</code>, <code>PrestoFile</code>.</li>
+			</ul>
+
+			<p><code>PrestoFile</code> offers the following events:</p>
+			<ul>
+				<li><code>start</code>: Fires when upload started. Returns <code>PrestoFile</code>.</li>
+				<li><code>abort</code>: Fires when upload aborted. Returns <code>PrestoFile</code>.</li>
+				<li><code>complete</code>: Fires when upload completed. Returns <code>PrestoFile</code>.</li>
+				<li><code>progress</code>: Fires whenever chunk upload succeed. Returns <code>fileProgress</code>(float number between 0 - 1), <code>PrestoFile</code>.</li>
+				<li><code>error</code>: Fires when chunk upload failed. Returns <code>chunkIndex</code>, <code>XMLHttpRequest.status</code>, <code>XMLHttpRequest.statusText</code>, <code>PrestoFile</code>.</li>
+			</ul>
+		</div>
+	</section>
+
+	<section id="license" class="pageSection topLisence">
+		<h2 class="pageSection_title">License</h2>
+		<div class="topLicense_body">
+			<p><a href="https://github.com/PrestoTools/presto.js/blob/master/LISENCE" target="_blank">MIT</a></p>
+		</div>
+	</section>
 
 	<footer class="footer">
 		<p class="footer_copy">&copy; 2018 Yu Watanabe</p>
