@@ -42,7 +42,7 @@
 			<h1 class="topHero_title">presto.js</h1>
 			<p class="topHero_subTitle">presto.js is a small JavaScript library for file upload.</p>
 			<div class="topHero_links">
-				<a href="https://github.com/PrestoTools/presto.js/releases/download/v0.1.0-beta/presto.js-v0.1.0-beta.zip" target="_blank">
+				<a href="https://github.com/PrestoTools/presto.js/releases/download/v1.0.0/presto.js-v1.0.0.zip" target="_blank">
 					<i class="fas fa-download"></i> Download
 				</a>
 				<a href="https://github.com/PrestoTools/presto.js" target="_blank">
@@ -115,9 +115,9 @@
 			<ul>
 				<li><code>Presto.on(string eventName, function callback)</code>: Add event listener to Presto.</li>
 				<li><code>Presto.off(string eventName, function callback)</code>: Remove event listener from Presto.</li>
-				<li><code>Presto.add(HTML5 FileList object)</code>: Add file(s) to Presto.</li>
+				<li><code>Presto.add(HTML5 FileList object, object optional form data)</code>: Add file(s) to Presto.</li>
 				<li><code>Presto.remove(string prestoId)</code>: Remove file from Presto. If nothing is specified, remove all files.</li>
-				<li><code>Presto.reset(HTML5 FileList object)</code>: Replace <code>Presto.fileList</code> with specified file list. If nothing is specified, remove all files.</li>
+				<li><code>Presto.reset(HTML5 FileList object, object optional form data)</code>: Replace <code>Presto.fileList</code> with specified file list. If nothing is specified, remove all files.</li>
 				<li><code>Presto.send(string prestoId)</code>: Start file upload of the specified file. If nothing is specified, upload all files.</li>
 				<li><code>Presto.abort(string prestoId)</code>: Abort file upload of the specified file. If nothing is specified, abort all files.</li>
 				<li><code>Presto.progress(string prestoId)</code>: Return upload progress (float number between 0 - 1) of the specified file. If nothing is specified, return progress for all files.</li>
