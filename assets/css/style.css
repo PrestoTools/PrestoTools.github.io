@@ -188,6 +188,22 @@ button:hover {
 }
 
 
+.topDescription {
+	width: 600px;
+	margin: 0 auto;
+	padding: 20px 0 0;
+	text-align: center;
+}
+
+.topDescription_text {
+	font-size: 16px;
+}
+
+.topDescription_text + .topDescription_text {
+	margin-top: 10px;
+}
+
+
 .topFeatures_items {
 	list-style: none;
 	display: flex;

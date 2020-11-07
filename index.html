@@ -40,7 +40,7 @@
 	<section class="topHero">
 		<div class="topHero_inner">
 			<h1 class="topHero_title">presto.js</h1>
-			<p class="topHero_subTitle">presto.js is a small JavaScript library for file upload.</p>
+			<p class="topHero_subTitle">presto.js is a small JavaScript library for splitting and transferring files</p>
 			<div class="topHero_links">
 				<a href="https://github.com/PrestoTools/presto.js/releases/download/v1.0.0/presto.js-v1.0.0.zip" target="_blank">
 					<i class="fas fa-download"></i> Download
@@ -52,20 +52,33 @@
 		</div>
 	</section>
 
+	<div class="topDescription">
+		<p class="topDescription_text">
+			The basic idea is to split files into small chunks, send them simultaneously and rebuild them into files again on the server side.
+		</p>
+		<p class="topDescription_text">
+			File data is cut out in chunks of 1MB each and sent in parallel to achieve a faster transfer rate than the standard function. The chunk size and number of parallel transfers can be changed by the user.
+		</p>
+	</div>
+
 	<section id="features" class="pageSection topFeatures">
 		<h2 class="pageSection_title">Features</h2>
 		<ul class="topFeatures_items">
 			<li class="topFeatures_item">
-				<p class="topFeatures_title">Fast</p>
-				<p class="topFeatures_description">Faster than browsers' default file upload.</p>
+				<p class="topFeatures_title">Faster</p>
+				<p class="topFeatures_description">Faster than web browsers' default file transfer implementation.</p>
 			</li>
 			<li class="topFeatures_item">
 				<p class="topFeatures_title">Easy to integrate</p>
-				<p class="topFeatures_description">presto.js has no dependent libraries. See minimal example below!</p>
+				<p class="topFeatures_description">Works without dependent libraries on all modern browsers. See minimal example below!</p>
 			</li>
 			<li class="topFeatures_item">
-				<p class="topFeatures_title">Available for large-size transfers</p>
+				<p class="topFeatures_title">Effective for transferring huge size files</p>
 				<p class="topFeatures_description">You can upload hundreds of GB of files at a time with presto.</p>
+			</li>
+			<li class="topFeatures_item">
+				<p class="topFeatures_title">Save memory</p>
+				<p class="topFeatures_description">presto.js doesn't suppress computer memory even if the user sends hundreds of GB files for hours..</p>
 			</li>
 		</ul>
 
@@ -80,7 +93,7 @@
 		</div>
 		<div class="topExample_footer">
 			<a class="topExample_link" href="https://github.com/PrestoTools/presto.js" target="_blank">
-				<i class="fas fa-external-link-alt"></i> More examples found on GitHub
+				<i class="fas fa-external-link-alt"></i> More examples are on GitHub
 			</a>
 		</div>
 	</section>
